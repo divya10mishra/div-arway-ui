@@ -10,11 +10,13 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
+import Pricing from 'src/views/subscription/pricing';
 
 const routes = [
   {
     path: 'app',
-    element: <DashboardLayout />,
+    // element: <DashboardLayout />,
+    element: <Pricing />,
     children: [
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
