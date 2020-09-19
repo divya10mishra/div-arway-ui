@@ -16,7 +16,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-
+import TopBar from './../../../layouts/DashboardLayout/TopBar';
 
 function Copyright() {
   return (
@@ -74,28 +74,29 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
- 
+
 
 }));
 const tierFeatures = [
   {
-  title: 'Free Feature Plan',
-  description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+    title: 'Free Feature Plan',
+    description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
   },
   {
     title: 'Free Feature Plan',
     description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
-    },
-    {
-      title: 'Free Feature Plan',
-      description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
-      },
+  },
+  {
+    title: 'Free Feature Plan',
+    description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+  },
 ];
 const tiers = [
   {
     title: 'Free',
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
+    detail: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'],
     buttonText: 'Sign up for free',
     buttonVariant: 'contained',
   },
@@ -109,6 +110,7 @@ const tiers = [
       'Help center access',
       'Priority email support',
     ],
+    detail: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'],
     buttonText: 'Get started',
     buttonVariant: 'contained',
   },
@@ -121,6 +123,7 @@ const tiers = [
       'Help center access',
       'Phone & email support',
     ],
+    detail: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'],
     buttonText: 'Contact us',
     buttonVariant: 'contained',
   },
@@ -146,9 +149,17 @@ const footers = [
 
 export default function Pricing() {
   const classes = useStyles();
+  tierFeatures.map(item => {
+    item.description.map(newItem => {
+      console.log("Descriptions", newItem)
+    })
+    // console.log(item,"Item")
+  })
+  // console.log("Description",tierFeatures.description)
   return (
     <React.Fragment>
       <CssBaseline />
+      <TopBar/>
       <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
@@ -170,9 +181,9 @@ export default function Pricing() {
           </Button>
         </Toolbar>
       </AppBar>
-      {/* Hero unit */}
+    
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
-     
+
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
           Pricing
         </Typography>
@@ -180,16 +191,19 @@ export default function Pricing() {
           Quickly build an effective pricing table for your potential customers with this layout.
           It&apos;s built with default Material-UI components with little customization.
         </Typography>
-      
+
       </Container>
-      
+
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
-      <Container>
-      <Button variant="contained" spacing={5}>
-             <AnchorLink className="nav-link" href='#compare'>Compare</AnchorLink>
-                  </Button>
-                  </Container>
+          <Button variant="contained" 
+          variant="contained"
+           style={{backgroundColor:'#19944a'}}>
+            <AnchorLink className="nav-link" href='#compare'
+            style={{color:'white'}}
+            >Compare</AnchorLink>
+          </Button>
+       
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
@@ -222,33 +236,34 @@ export default function Pricing() {
                 </CardContent>
                 <CardActions>
                   <Button fullWidth variant={tier.buttonVariant}
-                  //  color="success"
-                  // component={Link}
-                  // to="./NewLogin"
-                  style={{backgroundColor:'#19944a',color:'white'}}
-                  onClick={()=>{
-                    window.location.href='/NewLogin'
-                  }}
-                   >
+                    //  color="success"
+                    // component={Link}
+                    // to="./NewLogin"
+                    style={{ backgroundColor: '#19944a', color: 'white' }}
+                    onClick={() => {
+                      window.location.href = '/NewLogin'
+                    }}
+                  >
                     {tier.buttonText}
                   </Button>
                 </CardActions>
               </Card>
               {/* feature */}
               <CardContent>
-              <ul id="compare">
-
-                    {/* {tierFeatures.description.map((line) => (
-                      <Typography component="li" variant="subtitle1" align="left" key={line}>
-                        {line}
-                      </Typography>
+                <ul id="compare">
+                  {/* {tierFeatures.description.map((line) => (
+                      line.description.map(item=>{
+                        <Typography component="li" variant="subtitle1" align="left" key={line}>
+                          {item}
+                        </Typography>
+                      })
                     ))} */}
-                     {tier.description.map((line) => (
-                      <Typography component="li" variant="subtitle1" align="left" key={line}>
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
+                  {tier.detail.map((line) => (
+                    <Typography component="li" variant="subtitle1" align="left" key={line}>
+                      {line}
+                    </Typography>
+                  ))}
+                </ul>
               </CardContent>
               {/* feature */}
             </Grid>

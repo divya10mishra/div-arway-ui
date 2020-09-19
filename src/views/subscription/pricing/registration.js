@@ -170,7 +170,7 @@ const RegisterView = () => {
                 )}
                 <Box my={2}>
                   <Button
-                     style={{backgroundColor:'green',color:'white'}}
+                     style={{backgroundColor:'#19944a',color:'white'}}
                     disabled={isSubmitting}
                     fullWidth
                     size="large"

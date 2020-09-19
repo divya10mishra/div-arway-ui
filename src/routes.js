@@ -17,7 +17,7 @@ import Register from 'src/views/subscription/pricing/registration';
 const routes = [
   {
     path: 'app',
-    // element: <DashboardLayout />,
+    element: <DashboardLayout />,
     element: <Pricing />,
     children: [
       { path:'pricing',element:<Pricing/>},
