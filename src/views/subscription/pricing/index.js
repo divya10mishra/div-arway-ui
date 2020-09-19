@@ -10,11 +10,13 @@ import Grid from '@material-ui/core/Grid';
 import StarIcon from '@material-ui/icons/StarBorder';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+// import { Link  } from 'react-router-dom';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+
 
 function Copyright() {
   return (
@@ -95,7 +97,7 @@ const tiers = [
     price: '0',
     description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
     buttonText: 'Sign up for free',
-    buttonVariant: 'outlined',
+    buttonVariant: 'contained',
   },
   {
     title: 'Pro',
@@ -120,7 +122,7 @@ const tiers = [
       'Phone & email support',
     ],
     buttonText: 'Contact us',
-    buttonVariant: 'outlined',
+    buttonVariant: 'contained',
   },
 ];
 const footers = [
@@ -144,7 +146,6 @@ const footers = [
 
 export default function Pricing() {
   const classes = useStyles();
-
   return (
     <React.Fragment>
       <CssBaseline />
@@ -220,7 +221,15 @@ export default function Pricing() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} color='#19944a'>
+                  <Button fullWidth variant={tier.buttonVariant}
+                  //  color="success"
+                  // component={Link}
+                  // to="./NewLogin"
+                  style={{backgroundColor:'#19944a',color:'white'}}
+                  onClick={()=>{
+                    window.location.href='/NewLogin'
+                  }}
+                   >
                     {tier.buttonText}
                   </Button>
                 </CardActions>

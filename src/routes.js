@@ -10,7 +10,9 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
+import LogIn from 'src/views/subscription/pricing/login';
 import Pricing from 'src/views/subscription/pricing';
+import Register from 'src/views/subscription/pricing/registration';
 
 const routes = [
   {
@@ -18,6 +20,7 @@ const routes = [
     // element: <DashboardLayout />,
     element: <Pricing />,
     children: [
+      { path:'pricing',element:<Pricing/>},
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
       { path: 'dashboard', element: <DashboardView /> },
@@ -30,6 +33,8 @@ const routes = [
     path: '/',
     element: <MainLayout />,
     children: [
+      { path: 'NewLogin', element: <LogIn /> },
+      { path: 'NewRegister', element: <Register /> },
       { path: 'login', element: <LoginView /> },
       { path: 'register', element: <RegisterView /> },
       { path: '404', element: <NotFoundView /> },
