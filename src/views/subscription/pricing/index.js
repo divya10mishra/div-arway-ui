@@ -14,6 +14,7 @@ import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 function Copyright() {
   return (
@@ -71,8 +72,23 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
-}));
+ 
 
+}));
+const tierFeatures = [
+  {
+  title: 'Free Feature Plan',
+  description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+  },
+  {
+    title: 'Free Feature Plan',
+    description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+    },
+    {
+      title: 'Free Feature Plan',
+      description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
+      },
+];
 const tiers = [
   {
     title: 'Free',
@@ -155,6 +171,7 @@ export default function Pricing() {
       </AppBar>
       {/* Hero unit */}
       <Container maxWidth="sm" component="main" className={classes.heroContent}>
+     
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
           Pricing
         </Typography>
@@ -162,9 +179,16 @@ export default function Pricing() {
           Quickly build an effective pricing table for your potential customers with this layout.
           It&apos;s built with default Material-UI components with little customization.
         </Typography>
+      
       </Container>
+      
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
+      <Container>
+      <Button variant="contained" spacing={5}>
+             <AnchorLink className="nav-link" href='#compare'>Compare</AnchorLink>
+                  </Button>
+                  </Container>
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
@@ -196,11 +220,28 @@ export default function Pricing() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant} color="primary">
+                  <Button fullWidth variant={tier.buttonVariant} color='#19944a'>
                     {tier.buttonText}
                   </Button>
                 </CardActions>
               </Card>
+              {/* feature */}
+              <CardContent>
+              <ul id="compare">
+
+                    {/* {tierFeatures.description.map((line) => (
+                      <Typography component="li" variant="subtitle1" align="left" key={line}>
+                        {line}
+                      </Typography>
+                    ))} */}
+                     {tier.description.map((line) => (
+                      <Typography component="li" variant="subtitle1" align="left" key={line}>
+                        {line}
+                      </Typography>
+                    ))}
+                  </ul>
+              </CardContent>
+              {/* feature */}
             </Grid>
           ))}
         </Grid>
