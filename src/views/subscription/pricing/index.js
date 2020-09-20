@@ -22,6 +22,8 @@ import Flight from '@material-ui/icons/Flight'
 import Call from '@material-ui/icons/Call';
 import FAQ from './FAQ'
 import Testimonial from './Testimonial'
+import DoneAll from '@material-ui/icons/DoneAll'
+import Done from '@material-ui/icons/Done'
 
 function Copyright() {
   return (
@@ -105,8 +107,8 @@ const tiers = [
     price: '79',
     detailHeader:'Aircraft Feature Plan',
     description: ['$49 Discount for early adopters',
-    'overage API charge $10 every 5,400 requets',
-    'overage point cloud map charge $10 every 1,700 maps',
+    'Overage API charge $10 every 5,400 requets',
+    'Overage point cloud map charge $10 every 1,700 maps',
       'Forum Support',
     ],
     detail: ['Aircraft Feature Plan','Upto 20,000 requests/mo', '10,000 maps of point cloud map', '100GB content size in ARWAY web studio', '2 access granted for ARWAY web studio', '24/7 Production Support for early adopters'],
@@ -119,8 +121,8 @@ const tiers = [
     detailHeader:'Rocket Feature Plan',
     price: '277',
     description: ['$149 Discount for early adopters',
-    'overage API charge $20 every 5,400 requets',
-    'overage point cloud map charge $20 every 3,300 maps',
+    'Overage API charge $20 every 5,400 requets',
+    'Overage point cloud map charge $20 every 3,300 maps',
       
       'Production Support'
     ],
@@ -132,10 +134,8 @@ const tiers = [
     title: 'Enterprise Plan',
     icon:<Call/>,
     detailHeader:'',
-    description: ['Custom',
-      'Production Support'
-    ],
-    detail: [''],
+    description: ['Custom'],
+    detail: [],
     buttonText: 'Call us now',
     buttonVariant: 'contained',
   },
@@ -230,18 +230,19 @@ export default function Pricing() {
                 />
                 
                 <CardContent>
-                  <div className={tier.title != 'Enterprise' ? classes.cardPricing: classes.enterpriseCard }>
-                    <Typography component="h2" variant="h1" color="textPrimary">
+                  <div className={classes.cardPricing}>
+                    {tier.title!=='Enterprise Plan'?(<><Typography component="h2" variant="h1" color="textPrimary">
                       ${tier.price}
                     </Typography>
                     <Typography variant="h6" color="textSecondary">
                       /mo
-                    </Typography>
+                    </Typography></>):null}
+                   
                   </div>
                   <ul>
                     {tier.description.map((line) => (
                       <Typography component="li" variant="subtitle1" align="center" key={line}>
-                        {line}
+                         {tier.title=='Enterprise Plan'?(<b style={{fontSize:'20px'}}>{line}</b>):<div><DoneAll /> {line}</div>}
                       </Typography>
                     ))}
                   </ul>
@@ -263,11 +264,12 @@ export default function Pricing() {
               {/* feature */}
               <CardContent>
                 <ul id="compare">
-                  {tier.detail.map((line) => (
+                  <h3>{tier.detailHeader}</h3>
+                  {tier.detail.length>0? tier.detail.map((line) => (
                     <Typography component="li" variant="subtitle1" align="left" key={line}>
-                      {line}
+                      <div><Done/>{line}</div>
                     </Typography>
-                  ))}
+                  )):null}
                 </ul>
               </CardContent>
               {/* feature */}
