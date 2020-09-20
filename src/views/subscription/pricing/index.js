@@ -17,6 +17,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import TopBar from './../../../layouts/DashboardLayout/TopBar';
+import FAQ from './FAQ'
 
 function Copyright() {
   return (
@@ -250,8 +251,19 @@ export default function Pricing() {
               {/* feature */}
             </Grid>
           ))}
+       
         </Grid>
+        
       </Container>
+
+      {/* FAQ Start */}
+
+      <Container>
+      <FAQ/>
+      </Container>
+
+      {/* FAQ End */}
+     
       {/* Footer */}
       <Container maxWidth="md" component="footer" className={classes.footer}>
         <Grid container spacing={4} justify="space-evenly">
