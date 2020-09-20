@@ -13,8 +13,10 @@ import {
   makeStyles
 } from '@material-ui/core';
 import {
+  Activity,
   AlertCircle as AlertCircleIcon,
   BarChart as BarChartIcon,
+  BookOpen,
   Lock as LockIcon,
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
@@ -65,6 +67,16 @@ const items = [
     href: '/register',
     icon: UserPlusIcon,
     title: 'Register'
+  },
+  {
+    href: '/app/analytics',
+    icon: Activity,
+    title: 'Analytics'
+  },
+  {
+    href: '/app/AddFloorPlan',
+    icon: BookOpen,
+    title: 'Add Floor Plan'
   },
   {
     href: '/404',

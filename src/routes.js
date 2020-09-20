@@ -10,6 +10,8 @@ import NotFoundView from 'src/views/errors/NotFoundView';
 import ProductListView from 'src/views/product/ProductListView';
 import RegisterView from 'src/views/auth/RegisterView';
 import SettingsView from 'src/views/settings/SettingsView';
+import AnalyticsView from 'src/views/analytics/index';
+import AddFloorPlan from './views/maps/floorPlan/AddFloorPlan';
 import LogIn from 'src/views/subscription/pricing/login';
 import Pricing from 'src/views/subscription/pricing';
 import Register from 'src/views/subscription/pricing/registration';
@@ -17,14 +19,16 @@ import Register from 'src/views/subscription/pricing/registration';
 const routes = [
   {
     path: 'app',
-    element: <DashboardLayout />,
-    element: <Pricing />,
+        element: <DashboardLayout />,
+        element: <Pricing />,
     children: [
       { path:'pricing',element:<Pricing/>},
       { path: 'account', element: <AccountView /> },
       { path: 'customers', element: <CustomerListView /> },
+      { path: 'AddFloorPlan', element: <AddFloorPlan /> },
       { path: 'dashboard', element: <DashboardView /> },
       { path: 'products', element: <ProductListView /> },
+      { path: 'analytics', element: <AnalyticsView /> },
       { path: 'settings', element: <SettingsView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
@@ -37,11 +41,14 @@ const routes = [
       { path: 'NewRegister', element: <Register /> },
       { path: 'login', element: <LoginView /> },
       { path: 'register', element: <RegisterView /> },
+      { path: 'analytics', element: <AnalyticsView /> },
+      { path: 'AddFloorPlan', element: <AddFloorPlan /> },
       { path: '404', element: <NotFoundView /> },
       { path: '/', element: <Navigate to="/app/dashboard" /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
-  }
+  },
+  
 ];
 
 export default routes;

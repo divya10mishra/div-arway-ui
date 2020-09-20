@@ -32,7 +32,7 @@ const TrafficByDevice = ({ className, ...rest }) => {
       {
         data: [63, 15, 22],
         backgroundColor: [
-          colors.indigo[500],
+          colors.green[500],
           colors.red[600],
           colors.orange[600]
         ],
@@ -71,7 +71,7 @@ const TrafficByDevice = ({ className, ...rest }) => {
       title: 'Desktop',
       value: 63,
       icon: LaptopMacIcon,
-      color: colors.indigo[500]
+      color: colors.green[500]
     },
     {
       title: 'Tablet',

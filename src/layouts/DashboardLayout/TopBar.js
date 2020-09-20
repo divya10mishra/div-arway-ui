@@ -15,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsIcon from '@material-ui/icons/NotificationsOutlined';
 import InputIcon from '@material-ui/icons/Input';
 import Logo from 'src/components/Logo';
+import Feedback from './NavBar/Feedback';
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -44,6 +45,7 @@ const TopBar = ({
         </RouterLink>
         <Box flexGrow={1} />
         <Hidden mdDown>
+        <Feedback/>
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
