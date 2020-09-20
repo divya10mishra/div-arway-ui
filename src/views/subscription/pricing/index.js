@@ -17,7 +17,10 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import TopBar from './../../../layouts/DashboardLayout/TopBar';
+import FreeBreakfast from '@material-ui/icons/FreeBreakfast';
+import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
 import FAQ from './FAQ'
+import Testimonial from './Testimonial'
 
 function Copyright() {
   return (
@@ -81,16 +84,20 @@ const useStyles = makeStyles((theme) => ({
 const tiers = [
   {
     title: 'Ground Plan',
+    icon:<FreeBreakfast/>,
     price: '0',
     description: ['Free forever',
       'Forum Support'],
-    detail: ['Ground Feature Plan','Upto 2,000 requests/mo', '50 maps of point cloud map', '1GB content size in ARWAY web studio', 'Single access for ARWAY web studio', '24/7 Production Support for early adopters'],
+    detailHeader:'Ground Feature Plan',
+    detail: ['Upto 2,000 requests/mo', '50 maps of point cloud map', '1GB content size in ARWAY web studio', 'Single access for ARWAY web studio', '24/7 Production Support for early adopters'],
     buttonText: 'Try now',
     buttonVariant: 'contained',
   },
   {
     title: 'Aircraft Plan',
+    icon:<AccessAlarmIcon/>,
     price: '79',
+    detailHeader:'Aircraft Feature Plan',
     description: ['$49 Discount for early adopters',
     'overage API charge $10 every 5,400 requets',
     'overage point cloud map charge $10 every 1,700 maps',
@@ -102,6 +109,8 @@ const tiers = [
   },
   {
     title: 'Rocket Plan',
+    icon:<AccessAlarmIcon/>,
+    detailHeader:'Rocket Feature Plan',
     price: '277',
     description: ['$149 Discount for early adopters',
     'overage API charge $20 every 5,400 requets',
@@ -115,11 +124,13 @@ const tiers = [
   },
   {
     title: 'Enterprise Plan',
+    icon:<AccessAlarmIcon/>,
+    detailHeader:'',
     price: 'custom',
     description: ['Custom',
       'Production Support'
     ],
-    detail: ['Enterprise Feature Plan','Custom'],
+    detail: [''],
     buttonText: 'Call us now',
     buttonVariant: 'contained',
   },
@@ -180,33 +191,39 @@ export default function Pricing() {
           Quickly build an effective pricing table for your potential customers with this layout.
           It&apos;s built with default Material-UI components with little customization.
         </Typography>
+        <br/>
+        <center>
+        <Button variant="contained" 
+          variant="contained"
+           style={{backgroundColor:'info'}}>
+            <AnchorLink className="nav-link" href='#compare'
+            style={{color:'black'}}
+            >Compare</AnchorLink>
+          </Button>
+        </center>
+      
+       
 
       </Container>
 
       {/* End hero unit */}
-      <Container maxWidth="md" component="main">
-          <Button variant="contained" 
-          variant="contained"
-           style={{backgroundColor:'#19944a'}}>
-            <AnchorLink className="nav-link" href='#compare'
-            style={{color:'white'}}
-            >Compare</AnchorLink>
-          </Button>
-       
-        <Grid container spacing={5} alignItems="flex-end">
+      <Container maxWidth="lg" component="main">
+        
+        <Grid container spacing={5}>
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
             // <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
-               <Grid item key={tier.title} xs={12} sm={6} md={3}>
+              <Grid item key={tier.title} xs={12} sm={6} md={3}>
               <Card>
                 <CardHeader
+                  action={tier.icon}
                   title={tier.title}
                   subheader={tier.subheader}
                   titleTypographyProps={{ align: 'center' }}
                   subheaderTypographyProps={{ align: 'center' }}
-                  action={tier.title === 'Pro' ? <StarIcon /> : null}
                   className={classes.cardHeader}
                 />
+                
                 <CardContent>
                   <div className={classes.cardPricing}>
                     <Typography component="h2" variant="h3" color="textPrimary">
@@ -260,6 +277,7 @@ export default function Pricing() {
 
       <Container>
       <FAQ/>
+      <Testimonial/>
       </Container>
 
       {/* FAQ End */}
