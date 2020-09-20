@@ -18,7 +18,8 @@ import Box from '@material-ui/core/Box';
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 import TopBar from './../../../layouts/DashboardLayout/TopBar';
 import FreeBreakfast from '@material-ui/icons/FreeBreakfast';
-import AccessAlarmIcon from '@material-ui/icons/AccessAlarm';
+import Flight from '@material-ui/icons/Flight'
+import Call from '@material-ui/icons/Call';
 import FAQ from './FAQ'
 import Testimonial from './Testimonial'
 
@@ -68,6 +69,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'baseline',
     marginBottom: theme.spacing(2),
   },
+  enterpriseCard:{
+  display:'flex',
+  justifyContent:'center',
+  fontWeight:'bold',
+  },
   footer: {
     borderTop: `1px solid ${theme.palette.divider}`,
     marginTop: theme.spacing(8),
@@ -95,7 +101,7 @@ const tiers = [
   },
   {
     title: 'Aircraft Plan',
-    icon:<AccessAlarmIcon/>,
+    icon:<Flight/>,
     price: '79',
     detailHeader:'Aircraft Feature Plan',
     description: ['$49 Discount for early adopters',
@@ -109,7 +115,7 @@ const tiers = [
   },
   {
     title: 'Rocket Plan',
-    icon:<AccessAlarmIcon/>,
+    icon:<Flight/>,
     detailHeader:'Rocket Feature Plan',
     price: '277',
     description: ['$149 Discount for early adopters',
@@ -124,9 +130,8 @@ const tiers = [
   },
   {
     title: 'Enterprise Plan',
-    icon:<AccessAlarmIcon/>,
+    icon:<Call/>,
     detailHeader:'',
-    price: 'custom',
     description: ['Custom',
       'Production Support'
     ],
@@ -225,8 +230,8 @@ export default function Pricing() {
                 />
                 
                 <CardContent>
-                  <div className={classes.cardPricing}>
-                    <Typography component="h2" variant="h3" color="textPrimary">
+                  <div className={tier.title != 'Enterprise' ? classes.cardPricing: classes.enterpriseCard }>
+                    <Typography component="h2" variant="h1" color="textPrimary">
                       ${tier.price}
                     </Typography>
                     <Typography variant="h6" color="textSecondary">
