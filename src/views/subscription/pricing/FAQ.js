@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     fontSize: theme.typography.pxToRem(15),
     flexShrink: 0,
-    fontSize:'22px'
+    fontSize:'21px'
   },
   description:{
     fontSize:'18px',
