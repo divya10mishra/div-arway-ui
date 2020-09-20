@@ -77,54 +77,49 @@ const useStyles = makeStyles((theme) => ({
 
 
 }));
-const tierFeatures = [
-  {
-    title: 'Free Feature Plan',
-    description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
-  },
-  {
-    title: 'Free Feature Plan',
-    description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
-  },
-  {
-    title: 'Free Feature Plan',
-    description: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5']
-  },
-];
 const tiers = [
   {
-    title: 'Free',
+    title: 'Ground Plan',
     price: '0',
-    description: ['10 users included', '2 GB of storage', 'Help center access', 'Email support'],
-    detail: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'],
-    buttonText: 'Sign up for free',
+    description: ['Free forever',
+      'Forum Support'],
+    detail: ['Ground Feature Plan','Upto 2,000 requests/mo', '50 maps of point cloud map', '1GB content size in ARWAY web studio', 'Single access for ARWAY web studio', '24/7 Production Support for early adopters'],
+    buttonText: 'Try now',
     buttonVariant: 'contained',
   },
   {
-    title: 'Pro',
-    subheader: 'Most popular',
-    price: '15',
-    description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
+    title: 'Aircraft Plan',
+    price: '79',
+    description: ['$49 Discount for early adopters',
+    'overage API charge $10 every 5,400 requets',
+    'overage point cloud map charge $10 every 1,700 maps',
+      'Forum Support',
     ],
-    detail: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'],
-    buttonText: 'Get started',
+    detail: ['Aircraft Feature Plan','Upto 20,000 requests/mo', '10,000 maps of point cloud map', '100GB content size in ARWAY web studio', '2 access granted for ARWAY web studio', '24/7 Production Support for early adopters'],
+    buttonText: 'Fly now',
     buttonVariant: 'contained',
   },
   {
-    title: 'Enterprise',
-    price: '30',
-    description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
+    title: 'Rocket Plan',
+    price: '277',
+    description: ['$149 Discount for early adopters',
+    'overage API charge $20 every 5,400 requets',
+    'overage point cloud map charge $20 every 3,300 maps',
+      
+      'Production Support'
     ],
-    detail: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'],
-    buttonText: 'Contact us',
+    detail: ['Rocket Feature Plan','Upto 100,000 requests/mo', '10,000 maps of point cloud map', '1,000GB content size in ARWAY web studio', '5 access granted for ARWAY web studio', '24/7 Production Support for all users'],
+    buttonText: 'Space now',
+    buttonVariant: 'contained',
+  },
+  {
+    title: 'Enterprise Plan',
+    price: 'custom',
+    description: ['Custom',
+      'Production Support'
+    ],
+    detail: ['Enterprise Feature Plan','Custom'],
+    buttonText: 'Call us now',
     buttonVariant: 'contained',
   },
 ];
@@ -149,13 +144,6 @@ const footers = [
 
 export default function Pricing() {
   const classes = useStyles();
-  tierFeatures.map(item => {
-    item.description.map(newItem => {
-      console.log("Descriptions", newItem)
-    })
-    // console.log(item,"Item")
-  })
-  // console.log("Description",tierFeatures.description)
   return (
     <React.Fragment>
       <CssBaseline />
@@ -207,7 +195,8 @@ export default function Pricing() {
         <Grid container spacing={5} alignItems="flex-end">
           {tiers.map((tier) => (
             // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+            // <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
+               <Grid item key={tier.title} xs={12} sm={6} md={3}>
               <Card>
                 <CardHeader
                   title={tier.title}
@@ -251,13 +240,6 @@ export default function Pricing() {
               {/* feature */}
               <CardContent>
                 <ul id="compare">
-                  {/* {tierFeatures.description.map((line) => (
-                      line.description.map(item=>{
-                        <Typography component="li" variant="subtitle1" align="left" key={line}>
-                          {item}
-                        </Typography>
-                      })
-                    ))} */}
                   {tier.detail.map((line) => (
                     <Typography component="li" variant="subtitle1" align="left" key={line}>
                       {line}
