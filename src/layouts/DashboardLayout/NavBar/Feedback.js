@@ -2,27 +2,22 @@ import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import { Flag, Send} from 'react-feather';
+import {Send} from 'react-feather';
 import PropTypes from 'prop-types';
 import {
-  Box,
   Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Grid,
   TextField,
-  makeStyles, Badge, IconButton, Typography
+  // makeStyles,
+   Badge, IconButton, Typography
 } from '@material-ui/core';
 
-const useStyles = makeStyles(() => ({
-  root: {}
-}));
+// const useStyles = makeStyles(() => ({
+//   root: {}
+// }));
 
 export default function Feedback() {
   const [open, setOpen] = React.useState(false);
-  const classes = useStyles();
+  // const classes = useStyles();
 
   const handleClickOpen = () => {
     setOpen(true);

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
-  Button,
   Divider,
   Drawer,
   Hidden,
@@ -18,6 +17,7 @@ import {
   BarChart as BarChartIcon,
   BookOpen,
   Lock as LockIcon,
+  Map,
   Settings as SettingsIcon,
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
@@ -25,7 +25,6 @@ import {
   Users as UsersIcon
 } from 'react-feather';
 import NavItem from './NavItem';
-
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
   jobTitle: 'Senior Developer',
@@ -57,6 +56,16 @@ const items = [
     href: '/app/settings',
     icon: SettingsIcon,
     title: 'Settings'
+  },
+  {
+    href: '/app/createnewmap',
+    icon: Map,
+    title: 'Create New Map'
+  },
+  {
+    href: '/app/listMaps',
+    icon: Map,
+    title: 'Maps'
   },
   {
     href: '/login',

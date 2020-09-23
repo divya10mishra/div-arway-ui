@@ -13,8 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    flexShrink: 0,
-    fontSize:'21px'
+    flexShrink: 0
   },
   description:{
     fontSize:'18px',
@@ -45,7 +44,6 @@ export default function ControlledAccordions() {
           id="panel1bh-header"
         >
           <Typography className={classes.heading}>Which License Should I Purchase? </Typography>
-          {/* <Typography className={classes.secondaryHeading}>I am an accordion</Typography> */}
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={classes.description}>
@@ -65,9 +63,6 @@ export default function ControlledAccordions() {
           id="panel2bh-header"
         >
           <Typography className={classes.heading}>Where Can I Learn About the Target Types? </Typography>
-          {/* <Typography className={classes.secondaryHeading}>
-            You are currently not an owner
-          </Typography> */}
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={classes.description}>
@@ -82,9 +77,6 @@ export default function ControlledAccordions() {
           id="panel3bh-header"
         >
           <Typography className={classes.heading}>Advanced settings</Typography>
-          {/* <Typography className={classes.secondaryHeading}>
-            Filtering has been entirely disabled for whole web server
-          </Typography> */}
         </AccordionSummary>
         <AccordionDetails>
           <Typography className={classes.description}>
