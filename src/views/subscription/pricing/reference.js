@@ -1,108 +1,98 @@
 import React from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-        marginTop: '20px'
+const useStyles = makeStyles({
+  root: {
+    marginTop:'4%'
+  },
+  content:{
+    textAlign:'justify'
+  },
+  reference1:{
+      display:'flex',
+      flexDirection:'row'
     },
-    details: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    content: {
-        flex: '1 0 auto',
-    },
-    cover: {
-        width: 151,
-    },
-    controls: {
-        display: 'flex',
-        alignItems: 'center',
-        paddingLeft: theme.spacing(1),
-        paddingBottom: theme.spacing(1),
-    },
-    playIcon: {
-        height: 38,
-        width: 38,
-    },
-}));
+    reference2:{
+        display:'flex',
+        flexDirection:'row-reverse'
+      }
+});
 
-export default function MediaControlCard() {
-    const classes = useStyles();
-    const theme = useTheme();
+const projects=[
+    {
+        name:'Poject 1',
+        img:'/static/images/project1.jpg',
+        orientation:'row',
+        description:`Mac Miller The Vuforia Engine Basic + Cloud license offers all the powerful AR features included in the Basic license
+        (VuMarks, Images Targets, Object Targets, and Ground Plane) and adds a Cloud Recognition Database. Our Vuforia cloud
+        database supports up to 100,000 images and 10,000 image recognitions a month. This license is intended for businesses
+        and developers who want to build applications that use large, dynamic sets of targets.
+        Cloud databases are perfect for use with magazines or catalogs. Support is provided through our Vuforia Engine Community Forum`
+    },
+    {
+        name:'Poject 2',
+        img:'/static/images/project2.jpg',
+        orientation:'row-reverse',
+        description:`Mac Miller The Vuforia Engine Basic + Cloud license offers all the powerful AR features included in the Basic license
+        (VuMarks, Images Targets, Object Targets, and Ground Plane) and adds a Cloud Recognition Database. Our Vuforia cloud
+        database supports up to 100,000 images and 10,000 image recognitions a month. This license is intended for businesses
+        and developers who want to build applications that use large, dynamic sets of targets.
+        Cloud databases are perfect for use with magazines or catalogs. Support is provided through our Vuforia Engine Community Forum`
+    },
+    {
+        name:'Poject 3',
+        img:'/static/images/project3.jpg',
+        orientation:'row',
+        description:`Mac Miller The Vuforia Engine Basic + Cloud license offers all the powerful AR features included in the Basic license
+        (VuMarks, Images Targets, Object Targets, and Ground Plane) and adds a Cloud Recognition Database. Our Vuforia cloud
+        database supports up to 100,000 images and 10,000 image recognitions a month. This license is intended for businesses
+        and developers who want to build applications that use large, dynamic sets of targets.
+        Cloud databases are perfect for use with magazines or catalogs. Support is provided through our Vuforia Engine Community Forum`
+    },
+    {
+        name:'Poject 4',
+        img:'/static/images/project4.jpg',
+        orientation:'row-reverse',
+        description:`Mac Miller The Vuforia Engine Basic + Cloud license offers all the powerful AR features included in the Basic license
+        (VuMarks, Images Targets, Object Targets, and Ground Plane) and adds a Cloud Recognition Database. Our Vuforia cloud
+        database supports up to 100,000 images and 10,000 image recognitions a month. This license is intended for businesses
+        and developers who want to build applications that use large, dynamic sets of targets.
+        Cloud databases are perfect for use with magazines or catalogs. Support is provided through our Vuforia Engine Community Forum`
+    },
+]
 
-    return (
-        <Container>
-            <h1>References</h1>
-            <Card className={classes.root}>
-                <div className={classes.details}>
-                    <CardContent className={classes.content}>
-                        <Typography component="h5" variant="h5">
-                            Live From Space
-          </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                            Mac Miller The Vuforia Engine Basic + Cloud license offers all the powerful AR features included in the Basic license
-                            (VuMarks, Images Targets, Object Targets, and Ground Plane) and adds a Cloud Recognition Database. Our Vuforia cloud
-                            database supports up to 100,000 images and 10,000 image recognitions a month. This license is intended for businesses
-                            and developers who want to build applications that use large, dynamic sets of targets.
-                            Cloud databases are perfect for use with magazines or catalogs. Support is provided through our Vuforia Engine Community Forum
-          </Typography>
-                    </CardContent>
-                </div>
-                <CardMedia
-                    className={classes.cover}
-                    image="/static/images/cards/live-from-space.jpg"
-                    title="Live from space album cover"
-                />
-            </Card>
-            <Card className={classes.root}>
-                <div className={classes.details}>
-                    <CardContent className={classes.content}>
-                        <Typography component="h5" variant="h5">
-                            Live From Space
-          </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                            Mac Miller The Vuforia Engine Basic + Cloud license offers all the powerful AR features included in the Basic license
-                            (VuMarks, Images Targets, Object Targets, and Ground Plane) and adds a Cloud Recognition Database. Our Vuforia cloud
-                            database supports up to 100,000 images and 10,000 image recognitions a month. This license is intended for businesses
-                            and developers who want to build applications that use large, dynamic sets of targets.
-                            Cloud databases are perfect for use with magazines or catalogs. Support is provided through our Vuforia Engine Community Forum
-          </Typography>
-                    </CardContent>
-                </div>
-                <CardMedia
-                    className={classes.cover}
-                    image="/static/images/cards/live-from-space.jpg"
-                    title="Live from space album cover"
-                />
-            </Card>
-            <Card className={classes.root}>
-                <div className={classes.details}>
-                    <CardContent className={classes.content}>
-                        <Typography component="h5" variant="h5">
-                            Live From Space
-          </Typography>
-                        <Typography variant="subtitle1" color="textSecondary">
-                            Mac Miller The Vuforia Engine Basic + Cloud license offers all the powerful AR features included in the Basic license
-                            (VuMarks, Images Targets, Object Targets, and Ground Plane) and adds a Cloud Recognition Database. Our Vuforia cloud
-                            database supports up to 100,000 images and 10,000 image recognitions a month. This license is intended for businesses
-                            and developers who want to build applications that use large, dynamic sets of targets.
-                            Cloud databases are perfect for use with magazines or catalogs. Support is provided through our Vuforia Engine Community Forum
-          </Typography>
-                    </CardContent>
-                </div>
-                <CardMedia
-                    className={classes.cover}
-                    image="/static/images/cards/live-from-space.jpg"
-                    title="Live from space album cover"
-                />
-            </Card>
+export default function ImgMediaCard() {
+  const classes = useStyles();
 
-        </Container>
-    );
+  return (
+    <Card className={classes.root}>
+        {projects.length>0?projects.map(
+            (item)=>{
+                return(
+                <CardActionArea style={{display:'flex',flexDirection:`${item.orientation}`}}>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          height="140"
+          image={item.img}
+          title="Contemplative Reptile"
+        />
+        <CardContent className={classes.content}>
+          <Typography gutterBottom variant="h5" component="h2">
+            {item.name}
+          </Typography>
+            <Typography variant="subtitle1" color="textSecondary">{item.description}</Typography>
+        </CardContent>
+      </CardActionArea>
+            )}
+        ):null}
+    </Card>
+  );
 }

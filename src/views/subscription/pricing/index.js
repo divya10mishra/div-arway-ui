@@ -59,8 +59,8 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8, 0, 6),
   },
   cardHeader: {
-    backgroundColor:
-      theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+    backgroundColor:'bisque'
+      // theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
   },
   cardPricing: {
     display: 'flex',
@@ -255,7 +255,6 @@ export default function Pricing() {
       <Reference/>
         <FAQ />
         <Testimonial />
-       
       </Container>
 
       {/* FAQ End */}
