@@ -23,7 +23,7 @@ const SettingsView = () => {
   return (
     <Page
       className={classes.root}
-      title="Settings"
+      title="Arway-Settings"
     >
       <Container maxWidth="lg">
         <Notifications />

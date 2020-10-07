@@ -13,39 +13,47 @@ import {
 } from '@material-ui/core';
 import {
   Activity,
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  BookOpen,
-  Lock as LockIcon,
+  DownloadCloud,
+  FileText,
   Map,
+  MapPin,
   Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon
+  Users
 } from 'react-feather';
 import NavItem from './NavItem';
+
 const user = {
   avatar: '/static/images/avatars/avatar_6.png',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith'
+  jobTitle: 'XR Lead',
+  name: 'Nikhil Sawlani'
 };
 
 const items = [
   {
-    href: '/app/dashboard',
-    icon: BarChartIcon,
-    title: 'Dashboard'
+    href: '/app/studio',
+    icon: Map,
+    title: 'Studio'
   },
   {
-    href: '/app/customers',
-    icon: UsersIcon,
-    title: 'Customers'
+    href: '/app/analytics',
+    icon: Activity,
+    title: 'API Analytics'
   },
   {
-    href: '/app/products',
-    icon: ShoppingBagIcon,
-    title: 'Products'
+    href: '/app/pcd-maps',
+    icon: MapPin,
+    title: 'Maps'
+  },
+  {
+    href: 'https://docs.arway.app/',
+    icon: FileText,
+    title: 'Documentation'
+  },
+  {
+    href: '/app/download',
+    icon: DownloadCloud,
+    title: 'Downloads'
   },
   {
     href: '/app/account',
@@ -58,39 +66,9 @@ const items = [
     title: 'Settings'
   },
   {
-    href: '/app/createnewmap',
-    icon: Map,
-    title: 'Create New Map'
-  },
-  {
-    href: '/app/listMaps',
-    icon: Map,
-    title: 'Maps'
-  },
-  {
-    href: '/login',
-    icon: LockIcon,
-    title: 'Login'
-  },
-  {
-    href: '/register',
-    icon: UserPlusIcon,
-    title: 'Register'
-  },
-  {
-    href: '/app/analytics',
-    icon: Activity,
-    title: 'Analytics'
-  },
-  {
-    href: '/app/AddFloorPlan',
-    icon: BookOpen,
-    title: 'Add Floor Plan'
-  },
-  {
-    href: '/404',
-    icon: AlertCircleIcon,
-    title: 'Error'
+    href: '/app/support',
+    icon: Users,
+    title: 'Support'
   }
 ];
 

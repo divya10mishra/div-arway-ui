@@ -17,10 +17,10 @@ import FreeBreakfast from '@material-ui/icons/FreeBreakfast';
 import Flight from '@material-ui/icons/Flight'
 import Call from '@material-ui/icons/Call';
 import FAQ from './FAQ'
-import Testimonial from './Testimonial'
 import DoneAll from '@material-ui/icons/DoneAll'
 import Done from '@material-ui/icons/Done';
-import Reference from './reference'
+import Reference from './reference';
+import Payment from './payment';
 
 function Copyright() {
   return (
@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
       listStyle: 'none',
     },
   },
+
   appBar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
   },
@@ -59,9 +60,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(8, 0, 6),
   },
   cardHeader: {
-    backgroundColor:'bisque'
+    backgroundColor:'#1ab146'
       // theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
   },
+
   cardPricing: {
     display: 'flex',
     justifyContent: 'center',
@@ -83,9 +85,12 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
-
+  cardheight:{
+  height: '30vw'
+}
 
 }));
+
 const tiers = [
   {
     title: 'Ground Plan',
@@ -173,13 +178,14 @@ export default function Pricing() {
         </Typography>
         <br />
         <center>
-          <Button
+          {/* <Button
             variant="contained"
             style={{ backgroundColor: 'info' }}>
             <AnchorLink className="nav-link" href='#compare'
               style={{ color: 'black' }}
             >Compare</AnchorLink>
-          </Button>
+          </Button> */}
+          <Payment/>
         </center>
 
       </Container>
@@ -191,7 +197,7 @@ export default function Pricing() {
           {tiers.map((tier) => (
             // <Grid item key={tier.title} xs={12} sm={tier.title === 'Enterprise' ? 12 : 6} md={4}>
             <Grid item key={tier.title} xs={12} sm={6} md={3}>
-              <Card>
+              <Card className={classes.cardheight}>
                 <CardHeader
                   action={tier.icon}
                   title={tier.title}
@@ -222,6 +228,7 @@ export default function Pricing() {
                 <CardActions>
                   <Button fullWidth variant={tier.buttonVariant}
                     style={{ backgroundColor: '#19944a', color: 'white' }}
+                    // {tier.buttonText === 'Enterprise Plan'||'Ground Plan'? style={{marginTop:'50px',backgroundColor: '#19944a', color: 'white' }}:style={{backgroundColor: '#19944a', color: 'white' }}}
                     onClick={() => {
                       window.location.href = '/NewLogin'
                     }}
@@ -254,7 +261,6 @@ export default function Pricing() {
       <Container>
       <Reference/>
         <FAQ />
-        <Testimonial />
       </Container>
 
       {/* FAQ End */}

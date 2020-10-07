@@ -2,13 +2,9 @@ import React from 'react';
 import { NavLink as RouterLink } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  ListItem,
-  makeStyles
-} from '@material-ui/core';
+import { Button, ListItem, makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   item: {
     display: 'flex',
     paddingTop: 0,
@@ -40,37 +36,37 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const NavItem = ({
-  className,
-  href,
-  icon: Icon,
-  title,
-  ...rest
-}) => {
+const NavItem = ({ className, href, icon: Icon, title, ...rest }) => {
   const classes = useStyles();
-
+  const onClickDocumentation = () => {
+    window.open(href);
+  };
   return (
     <ListItem
       className={clsx(classes.item, className)}
       disableGutters
       {...rest}
     >
-      <Button
-        activeClassName={classes.active}
-        className={classes.button}
-        component={RouterLink}
-        to={href}
-      >
-        {Icon && (
-          <Icon
-            className={classes.icon}
-            size="20"
-          />
-        )}
-        <span className={classes.title}>
-          {title}
-        </span>
-      </Button>
+      {title !== 'Documentation' ? (
+        <Button
+          activeClassName={classes.active}
+          className={classes.button}
+          component={RouterLink}
+          to={href}
+        >
+          {Icon && <Icon className={classes.icon} size="20" />}
+          <span className={classes.title}>{title}</span>
+        </Button>
+      ) : (
+        <Button
+          activeClassName={classes.active}
+          onClick={onClickDocumentation}
+          className={classes.button}
+        >
+          {Icon && <Icon className={classes.icon} size="20" />}
+          <span className={classes.title}>{title}</span>
+        </Button>
+      )}
     </ListItem>
   );
 };

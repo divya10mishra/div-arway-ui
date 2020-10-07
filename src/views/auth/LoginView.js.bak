@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
 
 const LoginView = () => {
   const classes = useStyles();
-  const [isCredentialsValid, setIsCredentialsValid] = useState('none');
+  const [isCredentialsValid, setIsCredentialsValid] = useState('none')
   const navigate = useNavigate();
 
   return (
@@ -41,8 +41,8 @@ const LoginView = () => {
         <Container maxWidth="sm">
           <Formik
             initialValues={{
-              email: '',
-              password: ''
+              email: 'devloper@arway.app',
+              password: 'Password123'
             }}
             validationSchema={Yup.object().shape({
               email: Yup.string()
@@ -58,19 +58,20 @@ const LoginView = () => {
               formData.append('user', e.email);
               formData.append('pass', e.password);
               const response = await fetch(
-                'https://api.arway.xyz/developer/authentication/',
-                {
+                'http://localhost/platform-code/developer/authentication/', {
                   body: formData,
-                  method: 'post'
-                }
+                  method: "post"
+              }
               );
 
               const data = await response.text();
-              if (data) {
-                setIsCredentialsValid('none');
-                localStorage.setItem('accessToken', data);
-                navigate('/app/account', { replace: true });
-              } else setIsCredentialsValid('');
+              if(data){
+              setIsCredentialsValid('none');
+              navigate('/app/account', { replace: true });
+              localStorage.setItem('accessToken',data);
+              }
+              else
+              setIsCredentialsValid('')
             }}
           >
             {({
@@ -155,11 +156,7 @@ const LoginView = () => {
                   value={values.password}
                   variant="outlined"
                 />
-                <Typography
-                  color="textSecondary"
-                  style={{ display: isCredentialsValid }}
-                  variant="h6"
-                >
+                 <Typography color="textSecondary" style={{display:isCredentialsValid}} variant="h6">
                   Invalid Credentials
                 </Typography>
                 <Box my={2}>

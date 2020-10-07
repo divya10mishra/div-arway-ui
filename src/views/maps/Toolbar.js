@@ -3,68 +3,34 @@ import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
   Box,
-  Button,
   Card,
   CardContent,
-  TextField,
-  InputAdornment,
-  SvgIcon,
-  makeStyles
+  makeStyles,
+  Typography
 } from '@material-ui/core';
-import { Search as SearchIcon } from 'react-feather';
+
 import CreateNewMap from './CreateNewMap';
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-  importButton: {
-    marginRight: theme.spacing(1)
-  },
-  exportButton: {
-    marginRight: theme.spacing(1)
-  }
+const useStyles = makeStyles(theme => ({
+  root: {}
 }));
 
-const Toolbar = ({ className, ...rest }) => {
+const Toolbar = ({ className, maps, ...rest }) => {
   const classes = useStyles();
 
   return (
-    <div
-      className={clsx(classes.root, className)}
-      {...rest}
-    >
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-      >
-        <Button className={classes.importButton}>
-          Import
-        </Button>
-        <Button className={classes.exportButton}>
-          Export
-        </Button>
-        <CreateNewMap/>
-      </Box>
-      <Box mt={3}>
+    <div className={clsx(classes.root, className)} {...rest}>
+      <Box>
         <Card>
           <CardContent>
-            <Box maxWidth={500}>
-              <TextField
-                fullWidth
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <SvgIcon
-                        fontSize="small"
-                        color="action"
-                      >
-                        <SearchIcon />
-                      </SvgIcon>
-                    </InputAdornment>
-                  )
-                }}
-                placeholder="Search Maps"
-                variant="outlined"
-              />
+            <Box>
+              <Typography align="center" color="textPrimary" variant="h1">
+                You have created {maps} {maps > 1 ? 'maps' : 'map'}
+              </Typography>
+              <br />
+              <Typography align="center" color="textPrimary" variant="h1">
+                <CreateNewMap />
+              </Typography>
             </Box>
           </CardContent>
         </Card>

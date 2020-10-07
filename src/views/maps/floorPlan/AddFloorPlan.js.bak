@@ -10,7 +10,7 @@ import {
   CardHeader,
   Divider,
   Grid,
-  TextField
+  TextField,
   //makeStyles
 } from '@material-ui/core';
 
@@ -30,47 +30,60 @@ export default function AddFloorPlan() {
     setOpen(false);
   };
 
-  const onSubmit = e => {
-    e.preventDefault();
+  const onSubmit = (e) =>{
+    e.preventDefault()
     let elements = e.target.elements;
     let floorNo = elements.floorNo.value;
     let height = elements.height.value;
     let floorname = elements.floorName.value;
     let floorImg = elements.floorImg.files[0];
-    let formData = new FormData();
-    // formData.append('locid', e.email);
-    formData.append('map_name', floorname);
-    formData.append('height', height);
-    formData.append('floor_num', floorNo);
-    formData.append('image', floorImg);
-    fetch('https://api.arway.xyzmap-apiadd_floor_planindex.php', {
-      // content-type header should not be specified!
-      method: 'POST',
-      body: formData
-    })
-      .then(response => response.json())
-      .then(success => {
-        console.log(success);
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      // convert image file to base64 string
+    //  floorImg = reader.result;
+      let formData = new FormData();
+      // formData.append('locid', e.email);
+      formData.append('map_name', floorname);
+      formData.append('height', height);
+      formData.append('floor_num', floorNo);
+      formData.append('image', floorImg);
+      fetch('http://localhost/platform-code/server-api/floorplan/add_floorplan.php', {
+        method: 'POST',
+        body: formData,
       })
-      .catch(error => console.log(error));
-  };
+        .then(response => response.json())
+        .then(success => {
+          console.log(success);
+        })
+        .catch(error => console.log(error)
+      );
+    }, false);
+  
+   reader.readAsDataURL(floorImg);
+  
+   
+
+    
+  }
   return (
     <div>
       <Button
-        color="primary"
-        style={{ margin: 10 }}
-        variant="contained"
-        onClick={handleClickOpen}
-      >
-        Add Floor Plan
-      </Button>
+            color="primary"
+            style={{ margin: 10 }}
+            variant="contained"
+            onClick={handleClickOpen}
+          >
+             Add Floor Plan
+          </Button>
       <Dialog
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <form autoComplete="off" noValidate onSubmit={onSubmit}>
-          <DialogContent>
+          <form autoComplete="off" noValidate onSubmit={onSubmit}>
+
+        <DialogContent>
             <Card>
               <CardHeader title="New floorplan - sadsa" />
               <Divider />
@@ -117,25 +130,27 @@ export default function AddFloorPlan() {
                 </Grid>
               </CardContent>
             </Card>
-          </DialogContent>
-          <DialogActions>
-            <Button
-              color="primary"
-              variant="contained"
-              // onClick={handleClose}
-              type="submit"
-            >
-              Save
-            </Button>
-            <Button
-              color="background"
-              variant="contained"
-              onClick={handleClose}
-            >
-              Close
-            </Button>
-          </DialogActions>
+        </DialogContent>
+        <DialogActions>
+        <Button
+            color="primary"
+            variant="contained"
+            // onClick={handleClose}
+            type="submit"
+          >
+             Save
+          </Button>
+          <Button
+            color="background"
+            variant="contained"
+            onClick={handleClose}
+          >
+             Close
+          </Button>
+        
+        </DialogActions>
         </form>
+
       </Dialog>
     </div>
   );

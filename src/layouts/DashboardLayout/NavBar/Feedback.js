@@ -54,7 +54,13 @@ export default function Feedback() {
       >
         <DialogContent>
                     <TextField
-                    style={{width:400}}
+                    style={{width:350}}
+                    inputProps={{
+                      style: {
+                        height:110,
+                        padding: '0 14px',
+                      },
+                  }}
                       fullWidth
                       label="Feedback about this page?"
                       name="floorname"

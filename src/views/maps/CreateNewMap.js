@@ -15,17 +15,42 @@ import {
 } from '@material-ui/core';
 import Map from './Map';
 
-// const useStyles = makeStyles(() => ({
-//   root: {}
-// }));
 
 export default function CreateNewMap(props) {
   const [open, setOpen] = React.useState(false);
-  // const classes = useStyles();
-
   const handleClickOpen = () => {
     setOpen(true);
   };
+  
+  const onSubmit = (e) =>{
+    e.preventDefault()
+    let elements = e.target.elements;
+    let description = elements.description.value;
+    let type = elements.type.value;
+    let address = elements.address.value;
+    let mapName = elements.mapName.value;
+    let lat = elements.lat.value;
+    let lng = elements.lng.value;
+    let mapImage = elements.mapImage.files[0];
+      let formData = new FormData();
+      formData.append('name', mapName);
+      formData.append('type', type);
+      formData.append('desc', description);
+      formData.append('address', address);
+      formData.append('lat', lat);
+      formData.append('lon', lng);
+      formData.append('image', mapImage?mapImage:null);
+      fetch('http://localhost/platform-code/server-api/image/upload_map_image.php', {
+        method: 'POST',
+        body: formData,
+      })
+        .then(response => response.json())
+        .then(success => {
+          console.log(success);
+        })
+        .catch(error => console.log(error)
+      );   
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -41,9 +66,9 @@ export default function CreateNewMap(props) {
         open={open}
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
-      >
+      > <form autoComplete="off" noValidate  onSubmit={onSubmit}>
         <DialogContent>
-          <form autoComplete="off" noValidate>
+         
             <Card>
               <CardHeader title="Creatre new map" />
               <Divider />
@@ -53,7 +78,7 @@ export default function CreateNewMap(props) {
                       <TextField
                         fullWidth
                         label="Map Name *"
-                        name="floorname"
+                        name="mapName"
                         variant="outlined"
                       />
                     </Grid>
@@ -61,7 +86,7 @@ export default function CreateNewMap(props) {
                       <TextField
                         fullWidth
                         label="Map Description"
-                        name="floorno"
+                        name="description"
                         variant="outlined"
                       />
                     </Grid>
@@ -69,7 +94,7 @@ export default function CreateNewMap(props) {
                       <TextField
                         fullWidth
                         label="Map Type *"
-                        name="firstName"
+                        name="type"
                         variant="outlined"
                       />
                     </Grid>
@@ -77,7 +102,7 @@ export default function CreateNewMap(props) {
                       <TextField
                         fullWidth
                         helperText="Building Image"
-                        name="firstName"
+                        name="mapImage"
                         type="file"
                         variant="outlined"
                       />
@@ -92,16 +117,17 @@ export default function CreateNewMap(props) {
                 </Grid>
               </CardContent>
             </Card>
-          </form>
+
         </DialogContent>
         <DialogActions>
           <Button color="background" variant="contained" onClick={handleClose}>
             Close
           </Button>
-          <Button color="primary" variant="contained" onClick={handleClose}>
+          <Button color="primary" variant="contained" type="submit">
             Save
           </Button>
         </DialogActions>
+        </form>
       </Dialog>
     </div>
   );

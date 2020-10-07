@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink,useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -32,6 +32,11 @@ const TopBar = ({
 }) => {
   const classes = useStyles();
   const [notifications] = useState([]);
+  const navigate = useNavigate();
+  const onLogout = () =>{
+    localStorage.clear();
+    navigate('/login', { replace: true });
+  }
 
   return (
     <AppBar
@@ -40,7 +45,7 @@ const TopBar = ({
       {...rest}
     >
       <Toolbar>
-        <RouterLink to="/">
+        <RouterLink to="/app/studio">
           <Logo />
         </RouterLink>
         <Box flexGrow={1} />
@@ -55,7 +60,8 @@ const TopBar = ({
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="inherit"
+          onClick={onLogout}>
             <InputIcon />
           </IconButton>
         </Hidden>

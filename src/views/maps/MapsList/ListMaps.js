@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Container,
   Grid,
   makeStyles
 } from '@material-ui/core';
-import { Pagination } from '@material-ui/lab';
 import Page from 'src/components/Page';
-import Toolbar from './Toolbar';
+import Toolbar from '../Toolbar';
 import Results from './Results';
-import data from './data';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,39 +21,39 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const ListMaps = () => {
+const ListMaps = ({map}) => {
   const classes = useStyles();
-  const [products] = useState(data);
+
 
   return (
     <Page
       className={classes.root}
-      title="Products"
+      title="Arway-Studio"
     >
       <Container maxWidth={false}>
-        <Toolbar />
+        <Toolbar maps={map.length} />
         <Box mt={3}>
           <Grid
             container
             spacing={3}
           >
-            {products.map((product) => (
+            {map.map((map) => (
               <Grid
                 item
-                key={product.id}
+                key={map.map_id}
                 lg={4}
                 md={6}
                 xs={12}
               >
-                <Results
+                <Results 
                   className={classes.results}
-                  product={product}
+                  map={map}
                 />
               </Grid>
             ))}
           </Grid>
         </Box>
-        <Box
+        {/* <Box
           mt={3}
           display="flex"
           justifyContent="center"
@@ -65,7 +63,7 @@ const ListMaps = () => {
             count={3}
             size="small"
           />
-        </Box>
+        </Box> */}
       </Container>
     </Page>
   );

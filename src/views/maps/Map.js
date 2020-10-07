@@ -8,7 +8,7 @@ import {
 import Geocode from 'react-geocode';
 import Autocomplete from 'react-google-autocomplete';
 import { GoogleMapsAPI } from './client-config';
-import { Card, TextField } from '@material-ui/core';
+import { Card, colors, TextField } from '@material-ui/core';
 Geocode.setApiKey(GoogleMapsAPI);
 Geocode.enableDebug();
 
@@ -179,8 +179,8 @@ class Map extends Component {
           area: area ? area : '',
           city: city ? city : '',
           state: state ? state : '',
-          lat:newLat,
-          lng:newLng,
+          lat: newLat,
+          lng: newLng,
           markerPosition: {
             lat: newLat,
             lng: newLng
@@ -202,30 +202,30 @@ class Map extends Component {
    * @param place
    */
   onPlaceSelected = place => {
-    if(place.geometry){
-    const address = place.formatted_address,
-      addressArray = place.address_components,
-      city = this.getCity(addressArray),
-      area = this.getArea(addressArray),
-      state = this.getState(addressArray),
-      latValue = place.geometry.location.lat(),
-      lngValue = place.geometry.location.lng();
-    // Set these values in the state.
-    this.setState({
-      address: address ? address : '',
-      area: area ? area : '',
-      city: city ? city : '',
-      state: state ? state : '',
-      markerPosition: {
-        lat: latValue,
-        lng: lngValue
-      },
-      mapPosition: {
-        lat: latValue,
-        lng: lngValue
-      }
-    });
-  }
+    if (place.geometry) {
+      const address = place.formatted_address,
+        addressArray = place.address_components,
+        city = this.getCity(addressArray),
+        area = this.getArea(addressArray),
+        state = this.getState(addressArray),
+        latValue = place.geometry.location.lat(),
+        lngValue = place.geometry.location.lng();
+      // Set these values in the state.
+      this.setState({
+        address: address ? address : '',
+        area: area ? area : '',
+        city: city ? city : '',
+        state: state ? state : '',
+        markerPosition: {
+          lat: latValue,
+          lng: lngValue
+        },
+        mapPosition: {
+          lat: latValue,
+          lng: lngValue
+        }
+      });
+    }
   };
 
   render() {
@@ -267,7 +267,7 @@ class Map extends Component {
               height: '40px',
               paddingLeft: '16px',
               zIndex: 10000,
-              // marginTop: 15
+              border:'2px solid '+colors.green[500]
             }}
             onPlaceSelected={this.onPlaceSelected}
             types={['(regions)']}
@@ -282,15 +282,25 @@ class Map extends Component {
           <TextField
             fullWidth
             label="Map Address *"
-            name="firstName"
+            inputProps={{ readOnly: true }}
+            name="address"
             value={this.state.address}
             variant="outlined"
           />
+          <TextField
+            style={{ display: 'none' }}
+            name="lat"
+            value={this.state.markerPosition.lat}
+          /> <TextField
+          style={{ display: 'none' }}
+          name="lng"
+          value={this.state.markerPosition.lng}
+        />
           <AsyncMap
             googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${GoogleMapsAPI}&libraries=places`}
-            loadingElement={<Card style={{ height: 300}} />}
-            containerElement={<Card style={{ height: 200}} />}
-            mapElement={<Card style={{ height: 160}} />}
+            loadingElement={<Card style={{ height: 300 }} />}
+            containerElement={<Card style={{ height: 200 }} />}
+            mapElement={<Card style={{ height: 160 }} />}
           />
         </div>
       );
