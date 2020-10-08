@@ -86,7 +86,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   cardheight:{
-  height: '30vw'
+  height: '30vw',
+  position:'relative'
+},
+btnclass:{
+  bottom:'0',position:'absolute',width:'100%' 
 }
 
 }));
@@ -225,10 +229,10 @@ export default function Pricing() {
                     ))}
                   </ul>
                 </CardContent>
-                <CardActions>
+                <CardActions className={classes.btnclass}>
                   <Button fullWidth variant={tier.buttonVariant}
                     style={{ backgroundColor: '#19944a', color: 'white' }}
-                    // {tier.buttonText === 'Enterprise Plan'||'Ground Plan'? style={{marginTop:'50px',backgroundColor: '#19944a', color: 'white' }}:style={{backgroundColor: '#19944a', color: 'white' }}}
+                    // // {tier.buttonText === 'Enterprise Plan'||'Ground Plan'? style={{marginTop:'50px',backgroundColor: '#19944a', color: 'white' }}:style={{backgroundColor: '#19944a', color: 'white' }}}
                     onClick={() => {
                       window.location.href = '/NewLogin'
                     }}
